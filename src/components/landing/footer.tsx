@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mail, Phone, MapPin } from 'lucide-react';
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -7,20 +8,8 @@ export default function Footer() {
       <div className="container max-w-7xl px-4 py-12 md:px-6">
         <div className="grid gap-8 md:grid-cols-4">
           <div className="space-y-4 md:col-span-1">
-             <Link href="#" className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-7 w-7"
-              >
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-              </svg>
-              <span className="font-bold text-xl">Birla Infra Projects</span>
+             <Link href="#" className="flex items-center">
+              <Image src="/logo.png" alt="Birla Infra Projects Logo" width={80} height={80} />
             </Link>
             <p className="text-sm text-primary-foreground/70">
               Engineering excellence in commercial utility and MEP infrastructure.
