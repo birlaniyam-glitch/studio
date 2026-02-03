@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   description: 'We build top-tier commercial utility (MEP) infrastructure, delivering robust, high-quality engineering for lasting performance.',
   icons: {
     icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
   },
 };
 
