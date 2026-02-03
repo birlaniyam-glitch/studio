@@ -27,9 +27,6 @@ export default function Hero() {
           Delivering robust, high-quality engineering infrastructure for lasting performance.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <Button asChild size="lg">
-            <Link href="#projects">View Our Projects</Link>
-          </Button>
           <Button asChild size="lg" variant="secondary">
             <Link href="#contact">Get a Quote</Link>
           </Button>

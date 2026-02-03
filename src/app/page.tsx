@@ -2,7 +2,6 @@ import Header from '@/components/landing/header';
 import Hero from '@/components/landing/hero';
 import ValueProps from '@/components/landing/value-props';
 import Services from '@/components/landing/services';
-import Projects from '@/components/landing/projects';
 import Faq from '@/components/landing/faq';
 import Contact from '@/components/landing/contact';
 import Footer from '@/components/landing/footer';
@@ -15,7 +14,6 @@ export default function Home() {
         <Hero />
         <ValueProps />
         <Services />
-        <Projects />
         <Faq />
         <Contact />
       </main>

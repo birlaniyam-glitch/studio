@@ -23,30 +23,6 @@
       "description": "Two construction workers in hard hats collaborating on a construction site.",
       "imageUrl": "https://images.unsplash.com/photo-1768617154338-f7cd88a87039?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb25zdHJ1Y3Rpb24lMjBzdXBwb3J0fGVufDB8fHx8MTc3MDAyMjc1NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "construction support"
-    },
-    {
-      "id": "project-1",
-      "description": "A network of complex electrical grids and panels in a power room.",
-      "imageUrl": "https://images.unsplash.com/photo-1413882353314-73389f63b6fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxlbGVjdHJpY2FsJTIwZ3JpZHxlbnwwfHx8fDE3NzAwMjI3NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "electrical grid"
-    },
-    {
-      "id": "project-2",
-      "description": "A view of a modern hospital exterior with a focus on its ventilation system.",
-      "imageUrl": "https://images.unsplash.com/photo-1586773860383-dab5f3bc1bcc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxob3NwaXRhbCUyMGJ1aWxkaW5nfGVufDB8fHx8MTc3MDAwOTc4Mnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "hospital building"
-    },
-    {
-      "id": "project-3",
-      "description": "A network of copper and steel plumbing pipes running along a ceiling.",
-      "imageUrl": "https://images.unsplash.com/photo-1605313294941-ea43850d9de5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwbHVtYmluZyUyMHBpcGVzfGVufDB8fHx8MTc2OTkxNjE2MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "plumbing pipes"
-    },
-    {
-      "id": "project-4",
-      "description": "Rows of servers in a cooled data center.",
-      "imageUrl": "https://images.unsplash.com/photo-1488229297570-58520851e868?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZGF0YSUyMGNlbnRlcnxlbnwwfHx8fDE3Njk5OTMyNzV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "data center"
     }
   ]
 }
