@@ -1,11 +1,56 @@
+"use client";
+
+import { useState, useTransition } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Mail, Phone, MapPin, Loader2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { QuoteRequestSchema, type QuoteRequestInput } from "@/app/actions/send-quote-request";
+import { sendQuoteRequest } from "@/app/actions/send-quote-request";
 
 export default function Contact() {
+  const { toast } = useToast();
+  const [isPending, startTransition] = useTransition();
+
+  const form = useForm<QuoteRequestInput>({
+    resolver: zodResolver(QuoteRequestSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
+  });
+
+  function onSubmit(values: QuoteRequestInput) {
+    startTransition(async () => {
+      try {
+        const result = await sendQuoteRequest(values);
+
+        if (result.success) {
+          toast({
+            title: "Request Sent!",
+            description: "Thank you for your interest. We'll be in touch shortly.",
+          });
+          form.reset();
+        } else {
+          throw new Error(result.error || "An unknown error occurred.");
+        }
+      } catch (error: any) {
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: error.message || "Could not send your request. Please try again.",
+        });
+      }
+    });
+  }
+
   return (
     <section id="contact" className="py-12 md:py-24 bg-secondary">
       <div className="container grid max-w-6xl items-center gap-8 px-4 md:grid-cols-2 md:px-6">
@@ -51,25 +96,65 @@ export default function Contact() {
             <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
           </CardHeader>
           <CardContent>
-            <form className="grid gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" placeholder="Your Name" />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="your.email@example.com" />
-              </div>
-               <div className="grid gap-2">
-                <Label htmlFor="phone">Phone (Optional)</Label>
-                <Input id="phone" type="tel" placeholder="Your Phone Number" />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="message">Message</Label>
-                <Textarea id="message" placeholder="Tell us about your project..." className="min-h-[120px]" />
-              </div>
-              <Button type="submit" className="w-full">Submit Request</Button>
-            </form>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Your Name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="your.email@example.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Phone (Optional)</FormLabel>
+                      <FormControl>
+                        <Input type="tel" placeholder="Your Phone Number" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Message</FormLabel>
+                      <FormControl>
+                        <Textarea placeholder="Tell us about your project..." className="min-h-[120px]" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" className="w-full" disabled={isPending}>
+                  {isPending ? <Loader2 className="animate-spin" /> : "Submit Request"}
+                </Button>
+              </form>
+            </Form>
           </CardContent>
         </Card>
       </div>
