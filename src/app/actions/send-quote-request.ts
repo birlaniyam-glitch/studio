@@ -2,15 +2,7 @@
 
 import { z } from 'zod';
 import { Resend } from 'resend';
-
-export const QuoteRequestSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email." }),
-  phone: z.string().optional(),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
-});
-
-export type QuoteRequestInput = z.infer<typeof QuoteRequestSchema>;
+import { QuoteRequestSchema, type QuoteRequestInput } from '@/lib/schemas';
 
 export async function sendQuoteRequest(input: QuoteRequestInput) {
   if (!process.env.RESEND_API_KEY) {
@@ -32,7 +24,7 @@ export async function sendQuoteRequest(input: QuoteRequestInput) {
   const { name, email, phone, message } = validatedFields.data;
 
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'Birla Infra Projects <onboarding@resend.dev>',
       to: ['birlainfraprojects@gmail.com'],
       reply_to: email,
@@ -50,9 +42,14 @@ export async function sendQuoteRequest(input: QuoteRequestInput) {
       `,
     });
 
+    if (error) {
+      console.error("Resend Error:", error);
+      return { success: false, error: error.message };
+    }
+
     return { success: true, error: null };
-  } catch (error) {
-    console.error(error);
-    return { success: false, error: 'Failed to send email. Please try again later.' };
+  } catch (exception) {
+    console.error("Sending Exception:", exception);
+    return { success: false, error: 'An unexpected error occurred. Please try again.' };
   }
 }

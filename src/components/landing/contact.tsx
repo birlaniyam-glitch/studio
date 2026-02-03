@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Mail, Phone, MapPin, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { QuoteRequestSchema, type QuoteRequestInput } from "@/app/actions/send-quote-request";
+import { QuoteRequestSchema, type QuoteRequestInput } from "@/lib/schemas";
 import { sendQuoteRequest } from "@/app/actions/send-quote-request";
 
 export default function Contact() {
