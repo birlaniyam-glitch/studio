@@ -5,11 +5,17 @@ import { Resend } from 'resend';
 import { QuoteRequestSchema, type QuoteRequestInput } from '@/lib/schemas';
 
 export async function sendQuoteRequest(input: QuoteRequestInput) {
+  console.log("Server Action 'sendQuoteRequest' started.");
   const apiKey = process.env.RESEND_API_KEY;
 
-  if (!apiKey || apiKey.trim() === "") {
-    console.error("RESEND_API_KEY is not set or is empty.");
-    return { success: false, error: 'Resend API Key is missing. Please add RESEND_API_KEY to your .env.local file and restart the development server.' };
+  if (!apiKey) {
+    console.error("Server Action Error: RESEND_API_KEY is not found in process.env.");
+    return { success: false, error: 'Configuration Error: The RESEND_API_KEY was not found. Please ensure the .env.local file is in the root directory and the server has been restarted.' };
+  }
+
+  if (apiKey.trim() === "") {
+    console.error("Server Action Error: RESEND_API_KEY is an empty string.");
+    return { success: false, error: 'Configuration Error: The RESEND_API_KEY is empty. Please provide a valid key in the .env.local file.' };
   }
   
   const resend = new Resend(apiKey);
@@ -26,6 +32,7 @@ export async function sendQuoteRequest(input: QuoteRequestInput) {
   const { name, email, phone, message } = validatedFields.data;
 
   try {
+    console.log("Attempting to send email via Resend...");
     const { data, error } = await resend.emails.send({
       from: 'Birla Infra Projects <onboarding@resend.dev>',
       to: ['birlainfraprojects@gmail.com'],
@@ -45,13 +52,14 @@ export async function sendQuoteRequest(input: QuoteRequestInput) {
     });
 
     if (error) {
-      console.error("Resend Error:", error);
-      return { success: false, error: error.message };
+      console.error("Resend API Error:", error);
+      return { success: false, error: `Resend Error: ${error.message}` };
     }
 
+    console.log("Email sent successfully!");
     return { success: true, error: null };
   } catch (exception) {
-    console.error("Sending Exception:", exception);
-    return { success: false, error: 'An unexpected error occurred. Please try again.' };
+    console.error("General Sending Exception:", exception);
+    return { success: false, error: 'An unexpected server error occurred. Please try again.' };
   }
 }
