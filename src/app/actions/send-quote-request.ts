@@ -1,5 +1,6 @@
 'use server';
 
+import 'dotenv/config';
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { QuoteRequestSchema, type QuoteRequestInput } from '@/lib/schemas';
