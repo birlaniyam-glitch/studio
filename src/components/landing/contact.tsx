@@ -1,55 +1,24 @@
 "use client";
 
-import { useState, useTransition } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Mail, Phone, MapPin, Loader2 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { QuoteRequestSchema, type QuoteRequestInput } from "@/lib/schemas";
-import { sendQuoteRequest } from "@/app/actions/send-quote-request";
+import { Mail, Phone, MapPin } from "lucide-react";
+import Link from 'next/link';
 
 export default function Contact() {
-  const { toast } = useToast();
-  const [isPending, startTransition] = useTransition();
+  const subject = "Request for Quotation";
+  const body = `Dear Birla Infra Projects,
 
-  const form = useForm<QuoteRequestInput>({
-    resolver: zodResolver(QuoteRequestSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    },
-  });
+I am interested in your services and would like to request a quotation.
 
-  function onSubmit(values: QuoteRequestInput) {
-    startTransition(async () => {
-      try {
-        const result = await sendQuoteRequest(values);
+Project Details: [Please describe your project or requirements here]
 
-        if (result.success) {
-          toast({
-            title: "Request Sent!",
-            description: "Thank you for your interest. We'll be in touch shortly.",
-          });
-          form.reset();
-        } else {
-          throw new Error(result.error || "An unknown error occurred.");
-        }
-      } catch (error: any) {
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: error.message || "Could not send your request. Please try again.",
-        });
-      }
-    });
-  }
+Thank you,
+[Your Name]
+[Your Company, if applicable]
+[Your Phone Number]`;
+
+  const mailtoHref = `mailto:birlainfraprojects@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
   return (
     <section id="contact" className="py-12 md:py-24 bg-secondary">
@@ -93,68 +62,15 @@ export default function Contact() {
         <Card className="w-full">
           <CardHeader>
             <CardTitle>Get a Quote</CardTitle>
-            <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
+            <CardDescription>Click the button below to open a pre-filled email draft in your default email client.</CardDescription>
           </CardHeader>
-          <CardContent>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Your Name" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input placeholder="your.email@example.com" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="phone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Phone (Optional)</FormLabel>
-                      <FormControl>
-                        <Input type="tel" placeholder="Your Phone Number" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Message</FormLabel>
-                      <FormControl>
-                        <Textarea placeholder="Tell us about your project..." className="min-h-[120px]" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button type="submit" className="w-full" disabled={isPending}>
-                  {isPending ? <Loader2 className="animate-spin" /> : "Submit Request"}
-                </Button>
-              </form>
-            </Form>
+          <CardContent className="flex items-center justify-center pt-6">
+            <Button asChild size="lg">
+              <Link href={mailtoHref}>
+                <Mail className="mr-2 h-5 w-5" />
+                Request a Quote via Email
+              </Link>
+            </Button>
           </CardContent>
         </Card>
       </div>
