@@ -7,7 +7,7 @@ import { QuoteRequestSchema, type QuoteRequestInput } from '@/lib/schemas';
 export async function sendQuoteRequest(input: QuoteRequestInput) {
   if (!process.env.RESEND_API_KEY) {
     console.error("RESEND_API_KEY is not set.");
-    return { success: false, error: 'The email service is not configured.' };
+    return { success: false, error: 'Resend API Key is missing. Please add RESEND_API_KEY to your .env.local file and restart the development server.' };
   }
   
   const resend = new Resend(process.env.RESEND_API_KEY);
