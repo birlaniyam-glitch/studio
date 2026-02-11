@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: 'Birla Infra Projects - MEP Solutions',
   description: 'We build top-tier commercial utility (MEP) infrastructure, delivering robust, high-quality engineering for lasting performance.',
   icons: {
-    icon: '/logo.png',
+    icon: "/logo.png",
     shortcut: '/logo.png',
     apple: '/logo.png',
   },
