@@ -19,7 +19,7 @@ export default function Hero() {
         />
       )}
       <div className="absolute inset-0 bg-primary/70" />
-      <div className="relative z-10 container max-w-4xl px-4">
+      <div className="relative z-10 w-full px-4 md:px-6">
         <h1 className="text-4xl font-extrabold tracking-tight text-primary-foreground sm:text-5xl md:text-6xl lg:text-7xl">
           We build top-tier commercial utility (MEP) infrastructure.
         </h1>

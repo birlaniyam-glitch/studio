@@ -22,17 +22,17 @@ const valueProps = [
 export default function ValueProps() {
   return (
     <section id="why-us" className="py-12 md:py-24 bg-muted/40">
-      <div className="container px-4 md:px-6">
+      <div className="w-full px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground">Why Choose Us</div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Unwavering Commitment to Excellence</h2>
-            <p className="max-w-[900px] text-foreground/70 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="text-foreground/70 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               We combine deep industry knowledge with a client-first mindset to deliver infrastructure that stands the test of time.
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-5xl items-start gap-8 py-12 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid w-full items-start gap-8 py-12 sm:grid-cols-2 md:grid-cols-3">
           {valueProps.map((prop) => (
             <Card key={prop.title} className="h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
               <CardHeader className="items-center text-center">

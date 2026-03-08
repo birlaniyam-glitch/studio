@@ -22,7 +22,7 @@ Thank you,
 
   return (
     <section id="contact" className="py-12 md:py-24 bg-secondary">
-      <div className="container grid max-w-6xl items-center gap-8 px-4 md:grid-cols-2 md:px-6">
+      <div className="w-full grid items-center gap-8 px-4 md:grid-cols-2 md:px-6">
         <div className="space-y-6 text-secondary-foreground">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter text-secondary-foreground sm:text-4xl">

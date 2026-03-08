@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container max-w-7xl px-4 py-12 md:px-6">
+      <div className="w-full px-4 py-12 md:px-6">
         <div className="grid gap-8 md:grid-cols-4">
           <div className="space-y-4 md:col-span-1">
              <Link href="#" className="flex items-center">

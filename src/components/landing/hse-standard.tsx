@@ -34,7 +34,7 @@ const hsePoints = [
 export default function HseStandard() {
     return (
         <section id="hse-standard" className="py-12 md:py-24 bg-muted/40">
-            <div className="container max-w-5xl px-4 md:px-6">
+            <div className="w-full px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <div className="space-y-2">
                         <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground">
@@ -43,7 +43,7 @@ export default function HseStandard() {
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                             HSE & Work Procedure Standard
                         </h2>
-                        <p className="max-w-[900px] text-foreground/70 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                        <p className="text-foreground/70 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                             Our comprehensive standard for Health, Safety, Environment, and MEP work procedures ensures excellence and reliability in every project.
                         </p>
                     </div>

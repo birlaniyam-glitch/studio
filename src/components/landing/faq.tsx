@@ -27,7 +27,7 @@ const faqs = [
 export default function Faq() {
   return (
     <section id="faq" className="py-12 md:py-24">
-      <div className="container max-w-4xl px-4 md:px-6">
+      <div className="w-full px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="space-y-2">
             <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground">
@@ -36,7 +36,7 @@ export default function Faq() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
               Frequently Asked Questions
             </h2>
-            <p className="max-w-[900px] text-foreground/70 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="text-foreground/70 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Find quick answers to common questions about our services and processes.
             </p>
           </div>

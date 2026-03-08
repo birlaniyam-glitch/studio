@@ -28,17 +28,17 @@ export default function Services() {
 
   return (
     <section id="services" className="py-12 md:py-24">
-      <div className="container px-4 md:px-6">
+      <div className="w-full px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground">Our Services</div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Comprehensive MEP Solutions</h2>
-            <p className="max-w-[900px] text-foreground/70 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="text-foreground/70 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               From initial design to final implementation, we offer a complete suite of services to ensure your project's success.
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-sm items-start gap-8 py-12 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
+        <div className="grid w-full items-start gap-8 py-12 sm:grid-cols-2 md:gap-12 lg:grid-cols-3">
           {services.map((service) => {
             const image = serviceImages.find(img => img.id === service.id);
             return (
