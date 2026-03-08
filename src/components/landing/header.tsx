@@ -9,6 +9,7 @@ import Image from "next/image";
 
 const navItems = [
   { name: "Services", href: "#services" },
+  { name: "HSE Standard", href: "#hse-standard" },
   { name: "FAQ", href: "#faq" },
 ];
 

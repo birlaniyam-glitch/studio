@@ -19,6 +19,7 @@ export default function Footer() {
             <h4 className="font-semibold text-lg">Quick Links</h4>
             <ul className="space-y-2">
               <li><Link href="#services" className="text-sm text-primary-foreground/70 hover:text-primary-foreground">Services</Link></li>
+              <li><Link href="#hse-standard" className="text-sm text-primary-foreground/70 hover:text-primary-foreground">HSE Standard</Link></li>
               <li><Link href="#faq" className="text-sm text-primary-foreground/70 hover:text-primary-foreground">FAQ</Link></li>
               <li><Link href="#contact" className="text-sm text-primary-foreground/70 hover:text-primary-foreground">Contact</Link></li>
             </ul>
