@@ -12,7 +12,6 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Birla Infra Projects - MEP Solutions',
   description: 'We build top-tier commercial utility (MEP) infrastructure, delivering robust, high-quality engineering for lasting performance.',
-  icons: '/favicon.ico',
 };
 
 export default function RootLayout({
@@ -22,6 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body className="font-body antialiased">
         {children}
         <Toaster />
