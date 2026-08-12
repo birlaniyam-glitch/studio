@@ -1,6 +1,8 @@
+
 import Header from '@/components/landing/header';
 import Hero from '@/components/landing/hero';
 import ValueProps from '@/components/landing/value-props';
+import Clients from '@/components/landing/clients';
 import Services from '@/components/landing/services';
 import HseStandard from '@/components/landing/hse-standard';
 import Faq from '@/components/landing/faq';
@@ -14,6 +16,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <ValueProps />
+        <Clients />
         <Services />
         <HseStandard />
         <Faq />

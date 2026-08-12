@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -9,6 +10,7 @@ import Image from "next/image";
 
 const navItems = [
   { name: "Services", href: "#services" },
+  { name: "Clients", href: "#clients" },
   { name: "HSE Standard", href: "#hse-standard" },
   { name: "FAQ", href: "#faq" },
 ];
